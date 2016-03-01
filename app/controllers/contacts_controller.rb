@@ -9,6 +9,10 @@ class ContactsController < ApplicationController
     @contact_form = Contact.new contact_params
 
     if @contact_form.valid?
+      ContactMailer.contact_email(@contact_form.name,
+                                  @contact_form.message,
+                                  @contact_form.email).deliver_later
+
       flash[:notice] = 'Your contacts was sent by email'
       redirect_to new_contact_path
     else
