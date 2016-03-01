@@ -46,7 +46,7 @@ feature 'Send contacts', :devise do
   scenario 'visitor sends invalid contact data and see errors' do
     visit '/'
 
-    click_button 'Create Contact'
+    click_button 'Submit'
 
     expect(page).to have_css('div .has-error')
     expect(page).to have_content("can't be blank")
@@ -63,7 +63,7 @@ feature 'Send contacts', :devise do
     fill_in 'Email', with: EMAIL
     fill_in 'Name', with: NAME
 
-    click_button 'Create Contact'
+    click_button 'Submit'
 
     expect(page).to have_css('div .alert-success')
     expect(page).to have_content('Your contacts was sent by email')
