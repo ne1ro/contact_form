@@ -1,2 +1,7 @@
-h1 Contacts#new
-p Find me in app/views/contacts/new.html.slim
+= content_for :title, 'Send your contact data'
+
+= simple_form_for @contact_form, url: contacts_path do |f|
+  = f.input :name, input_html: { required: true }
+  = f.input :email, input_html: { required: true }, as: :email
+  = f.input :message
+  = f.button :submit
