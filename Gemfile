@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'bootstrap-sass'
-gem 'bh'
 gem 'devise'
 gem 'figaro'
 gem 'pg'

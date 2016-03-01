@@ -47,9 +47,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bh (1.3.5)
-      actionpack
-      activesupport
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
@@ -360,7 +357,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   better_errors
-  bh
   binding_of_caller
   bootstrap-sass
   bullet
