@@ -10,13 +10,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'bootstrap-sass'
+gem 'bh'
 gem 'devise'
 gem 'figaro'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'font-awesome-rails'
+gem 'devise-bootstrap-views'
 
 group :development do
   gem 'better_errors'
