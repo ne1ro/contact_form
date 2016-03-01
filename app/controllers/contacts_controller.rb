@@ -1,8 +1,7 @@
 # Contact form controller
 class ContactsController < ApplicationController
   def new
-    @contact_form = Contact.new name: current_user.try(:name),
-                                email: current_user.try(:email)
+    @contact_form = ContactBuilder.new(current_user).contact
   end
 
   def create
