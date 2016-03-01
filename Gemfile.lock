@@ -41,6 +41,7 @@ GEM
     ast (2.2.0)
     autoprefixer-rails (6.3.3.1)
       execjs
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -51,7 +52,20 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    brakeman (3.2.1)
+      erubis (~> 2.6)
+      haml (>= 3.0, < 5.0)
+      highline (>= 1.6.20, < 2.0)
+      ruby2ruby (~> 2.3.0)
+      ruby_parser (~> 3.8.1)
+      safe_yaml (>= 1.0)
+      sass (~> 3.0)
+      slim (>= 1.3.6, < 4.0)
+      terminal-table (~> 1.4)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
     capybara (2.6.2)
       addressable
@@ -70,6 +84,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    colorize (0.7.7)
     concurrent-ruby (1.0.1)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
@@ -81,7 +96,16 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
+    email_spec (2.0.0)
+      htmlentities (~> 4.3.3)
+      launchy (~> 2.1)
+      mail (~> 2.6.3)
     erubis (2.7.0)
+    eventmachine (1.0.9.1)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -93,13 +117,52 @@ GEM
     ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.5.0.1)
+      railties (>= 3.2, < 5.1)
+    formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    guard (2.13.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, <= 4.0)
+      lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-brakeman (0.8.3)
+      brakeman (>= 2.1.1)
+      guard (>= 2.0.0)
+    guard-bundler (2.1.0)
+      bundler (~> 1.0)
+      guard (~> 2.2)
+      guard-compat (~> 1.1)
+    guard-compat (1.2.1)
+    guard-livereload (2.5.2)
+      em-websocket (~> 0.5)
+      guard (~> 2.8)
+      guard-compat (~> 1.0)
+      multi_json (~> 1.8)
+    guard-rails (0.7.2)
+      guard (~> 2.11)
+      guard-compat (~> 1.0)
+    guard-rspec (4.6.4)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
+    guard-rubocop (1.2.0)
+      guard (~> 2.0)
+      rubocop (~> 0.20)
+    guard-webpack (0.1.2)
+      guard (< 3.0)
+    haml (4.0.7)
+      tilt
+    highline (1.7.8)
+    htmlentities (4.3.4)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     interception (0.5)
-    jbuilder (2.4.1)
-      activesupport (>= 3.0.0, < 5.1)
-      multi_json (~> 1.2)
     jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -107,8 +170,14 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
+    listen (3.0.6)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.10)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -116,8 +185,12 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
+    nenv (0.3.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    notiffany (0.0.8)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     orm_adapter (0.5.0)
     parser (2.3.0.6)
       ast (~> 2.2)
@@ -127,6 +200,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-bloodline (0.0.2)
+      colorize (~> 0.7)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     pry-rescue (1.4.2)
@@ -165,8 +241,15 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
     rake (10.5.0)
+    rb-fsevent (0.9.7)
+    rb-inotify (0.9.7)
+      ffi (>= 0.5.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -191,7 +274,13 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 0.3)
     ruby-progressbar (1.7.5)
+    ruby2ruby (2.3.0)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
+    ruby_parser (3.8.1)
+      sexp_processor (~> 4.1)
     rubyzip (1.2.0)
+    safe_yaml (1.0.4)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -204,9 +293,18 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    sexp_processor (4.7.0)
+    shellany (0.0.1)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simplecov (0.11.2)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -228,6 +326,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     temple (0.7.6)
+    terminal-notifier (1.6.3)
+    terminal-notifier-guard (1.7.0)
+    terminal-table (1.5.2)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
@@ -239,6 +340,7 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode-display_width (0.3.1)
+    uniform_notifier (1.9.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -254,20 +356,34 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
+  binding_of_caller
   bootstrap-sass
+  bullet
   byebug
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
+  email_spec
   factory_girl_rails
   faker
   figaro
-  jbuilder (~> 2.0)
+  font-awesome-rails
+  guard
+  guard-brakeman
+  guard-bundler
+  guard-livereload (~> 2.5)
+  guard-rails
+  guard-rspec
+  guard-rubocop
+  guard-webpack
   jquery-rails
   launchy
+  letter_opener
   pg
+  pry-bloodline
   pry-rails
   pry-rescue
   puma
@@ -278,10 +394,14 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers (~> 3.1)
   simple_form
+  simplecov
   slim-rails
   spring
   spring-commands-rspec
+  terminal-notifier
+  terminal-notifier-guard
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
