@@ -118,3 +118,4 @@ Session.vim
 # temporary
 .netrwhist
 *~
+*.swp
